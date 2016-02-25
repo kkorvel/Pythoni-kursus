@@ -2,7 +2,7 @@ import os
 import urllib
 # Following is the directory with log files,
 # On Windows substitute it where you downloaded the files
-root = "/home/kkorvel/logs"
+root = "/home/kkorvel/Documents/logs"
  
 keywords = "Windows", "Linux", "OS X", "Ubuntu", "Googlebot", "bingbot", "Android", "YandexBot", "facebookexternalhit"
 d = {}
@@ -53,7 +53,7 @@ for filename in os.listdir(root):
                 break
 
 print
-print("Top 5 users:")
+print("Top 5 usernames:")
 results = user_bytes.items()
 results.sort(key = lambda item:item[1], reverse=True)
 for user, transferred_bytes in results[:5]:
