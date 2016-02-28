@@ -1,5 +1,16 @@
 import os
 import urllib
+import argparse
+parser = argparse.ArgumentParser(description='Apache2 log parser.')
+parser.add_argument('--path',
+    help="Path to Apache2 log files", default="/var/log/apache2")
+parser.add_argument('--top-urls',
+    help="Find top URL-s", action='store_true')
+parser.add_argument('--geoip',
+    help="Resolve IP-s to country codes", action='store_true') # We'll implement this later ;)
+parser.add_argument('--verbose',
+    help="Increase verbosity", action="store_true")
+args = parser.parse_args()
 # Following is the directory with log files,
 # On Windows substitute it where you downloaded the files
 root = "/home/kkorvel/Documents/logs"
@@ -51,7 +62,15 @@ for filename in os.listdir(root):
                 except KeyError:
                     d[keyword] = 1
                 break
-
+def humanize(bytes):
+    if bytes < 1024:
+        return "%d B" % bytes
+    elif bytes < 1024 ** 2:
+        return "%.1f kB" % (bytes / 1024.0)
+    elif bytes < 1024 ** 3:
+        return "%.1f MB" % (bytes / 1024.0 ** 2)
+    else:
+        return "%.1f GB" % (bytes / 1024.0 ** 3)
 print
 print("Top 5 usernames:")
 results = user_bytes.items()
@@ -65,4 +84,3 @@ results = urls.items()
 results.sort(key = lambda item:item[1], reverse=True)
 for path, hits in results[:5]:
     print "http://enos.itcollege.ee" + path, "==>", hits, "(", hits * 100 / total, "%)"
-
