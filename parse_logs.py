@@ -91,16 +91,13 @@ document =  etree.parse(open(os.path.join(PROJECT_ROOT, 'templates', 'map.svg'))
 max_hits = max(countries.values())
 
 for country_code, hits in countries.items():
-    if not country_code: continue # Skip localhost, sattelite phones etc
-    print country_code, hex(hits * 255 / max_hits)[2:] # 2: skips 0x of hexadecimal number
+    if not country_code: continue
+    print country_code, hex(hits * 255 / max_hits)[2:]
     sel = CSSSelector("#" + country_code.lower())
     for j in sel(document):
-        # Instead of RGB it makes sense to use hue-saturation-luma color coding
-        # 120 degrees is green, 0 degrees is red
-        # we want 0 to max hits to be correlated from green to red
+
         j.set("style", "fill:hsl(%d, 90%%, 70%%);" % (120 - hits * 120 / max_hits))
 
-        # Remove styling from children
         for i in j.iterfind("{http://www.w3.org/2000/svg}path"):
             i.attrib.pop("class", "")
 
@@ -115,20 +112,14 @@ env = Environment(
 
 import codecs
 
-# This is the context variable for our template, these are the only
-# variables that can be accessed inside template
-
 context = {
-    "humanize": humanize, # This is why we use locals() :D
+    "humanize": humanize,
     "url_hits": sorted(urls.items(), key=lambda i:i[1], reverse=True),
     "user_bytes": sorted(user_bytes.items(), key = lambda item:item[1], reverse=True),
 }
 
 with codecs.open(os.path.join(args.output, "report.html"), "w", encoding="utf-8") as fh:
     fh.write(env.get_template("report.html").render(context))
-
-    # A more convenient way is to use env.get_template("...").render(locals())
-    # locals() is a dict which contains all locally defined variables ;)
 
 os.system("x-www-browser file://" + os.path.realpath("build/report.html") + " &")
 
