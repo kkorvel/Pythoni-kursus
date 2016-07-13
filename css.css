@@ -1,0 +1,164 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    -o-user-select: none;
+     user-select: none;
+    background-image: url("/static/robot-04.jpg");
+}    
+    h1 {
+    text-align: center;
+    color:blue;
+    font-weight: bold;
+    }
+
+img {
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    -o-user-select: none;
+     user-select: none; 
+     margin-left:100px;
+     margin-right:auto;
+    }
+    
+#button-background {
+    background: url('http://192.168.12.5:8080/?action=stream') no-repeat center center;
+    min-height: 320px;
+    position:relative;
+    top:100px;
+}
+
+#button {
+    margin: 0 auto;
+    width: 320px;
+    height: 240px;
+    position: relative;
+}
+
+button {
+    position: absolute;
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    color: white;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 15px 20px 10px 20px;
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    -o-user-select: none;
+     user-select: none;
+}
+
+#left { 
+    left: -150px;
+    top: 124px;
+    }
+#right {
+    right: -154px;
+    top: 124px;
+    }
+    
+#go {
+    left: 105px;
+    top: 5px;
+    }
+ 
+#back {
+    left: 106px;
+    top: 264px;
+    }
+
+#batterystats {
+     background:lightblue;
+     position:absolute;
+     top:50px;
+     font-weight: bold;
+     color: blue;
+     right:0px;
+    }
+#voltage {
+    color: green;
+    background-color:white;
+    position:absolute;
+    top:70px;
+    right:0px;
+    }
+#capacity {
+    color: red;
+    background-color:white;
+    }
+#battery {
+  border: 2px solid white;
+  background: black;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 20px;
+  padding: 2px;
+  position:absolute;
+  top:-90px;
+}
+#charge {
+  width: 70%;
+  background: white;
+  height: 100%;
+}
+#left2 { 
+    left: 65px;
+    top: 504px;
+    }
+#right2 {
+    right: 770px;
+    top: 504px;
+    }
+    
+#go2 {
+    left: 326px;
+    top: 422px;
+    }
+ 
+#back2 {
+    left: 326px;
+    top: 641px;
+    }
+#new {
+    margin: 0 auto;
+    position: relative;
+    }
+#circleleft {
+        right:370px;
+        position:absolute;
+        top:30px;
+        }
+#circleleft circle {
+   fill: lightblue;
+}
+#circleleft.activated circle {
+    fill:red;
+    }
+
+#circleright {
+        left:370px;
+        position:absolute;
+        top:30px;
+        }
+#circleright circle {
+   fill: lightblue;
+}
+#circleright.activated circle {
+    fill:red;
+    }
